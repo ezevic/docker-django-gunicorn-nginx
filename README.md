@@ -1,6 +1,7 @@
 # docker-django-gunicorn-nginx
 
 ###### This docker container is intended to run with a remote postgres database, or failing that, with sqlite.
+###### If you want to run the container with postgres, [THIS](https://github.com/ezevic/docker-postgres-django-gunicorn-nginx) following repository is what you are looking for.
 
 ## Prerequisites
 
@@ -13,7 +14,7 @@ Make sure you have the following requirements installed before proceeding:
 
 1. Clone this repository on your local machine:
  ```shell
-   git clone https://github.com/ezevic/docker-django-gunicorn-nginx.git
+git clone https://github.com/ezevic/docker-django-gunicorn-nginx.git
 ```
 
 2. Configure your environment variables. Copy the example environment file `create-.env.prod-here` and rename it to `.env.prod`. Modify the variables in `.env.prod` with the appropriate values.
@@ -22,14 +23,19 @@ Make sure you have the following requirements installed before proceeding:
 
 1. Start your services using Docker Compose:
 ```shell
-   docker-compose -f docker-compose.prod-no-db.yml up -d
+docker-compose -f docker-compose.prod-no-db.yml up -d
 ```
 
 This will build Docker images, run containers, and start your application.
 
 2. To stop the services, you can use:
  ```shell
-   docker-compose -f .\docker-compose.prod-no-db.yml down
+docker-compose -f .\docker-compose.prod-no-db.yml down
+```
+
+3. If you want to run a command, you can use:
+```shell
+sudo docker-compose -f docker-compose.prod-no-db.yml run web python manage.py migrate
 ```
 
 ## Accessing the Application
